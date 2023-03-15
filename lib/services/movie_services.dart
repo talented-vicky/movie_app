@@ -6,12 +6,12 @@ import 'package:http/http.dart' as http;
 import '../models/movie.dart';
 
 class MovieService {
-  // static const _authority = "online-movie-database.p.rapidapi.com";
-  static const _authority = "sameer-kumar-aztro-v1.p.rapidapi.com";
+  static const _authority = "online-movie-database.p.rapidapi.com";
+  // static const _authority = "sameer-kumar-aztro-v1.p.rapidapi.com";
   static const _path = "/";
   static const _query = {"sign": "aquarius", "day": "today"};
   static const Map<String, String> _headers = {
-    "x-rapidapi-key": "bd9afb28e7msh026d8d722ca41e0p1c082cjsn3d51662b80d1",
+    "x-rapidapi-key": "4c1bdd2f65msha061590ecef1ee6p1bb40bjsn46fdc2a8d8ac",
     "x-rapidapi-host": _authority,
   };
 
