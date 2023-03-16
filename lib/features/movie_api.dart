@@ -12,31 +12,96 @@ class MovieAPIPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomColors.backColor,
-      appBar: AppBar(
-        backgroundColor: CustomColors.backColor,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios_new,
-            color: Colors.black,
-          ),
-          onPressed: () => Navigator.pop(context),
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: CustomColors.backColor,
+      //   elevation: 0,
+      //   leading: IconButton(
+      //     icon: const Icon(
+      //       Icons.arrow_back_ios_new,
+      //       color: Colors.black,
+      //     ),
+      //     onPressed: () => Navigator.pop(context),
+      //   ),
+      // ),
       body: Container(
         padding: const EdgeInsets.all(10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              decoration: const BoxDecoration(
-                  borderRadius:
-                      BorderRadius.only(bottomLeft: Radius.circular(10))),
-              child: Image.asset(
-                'assets/images/ford.jpg',
-                height: 250,
+            // image, icon and overlap widget
+            Stack(children: [
+              Container(
+                color: Colors.amber,
+                child: const Text("icon here"),
               ),
-            ),
+              Container(
+                decoration: const BoxDecoration(
+                    borderRadius:
+                        BorderRadius.only(bottomLeft: Radius.circular(10))),
+                child: Image.asset(
+                  'assets/images/ford.jpg',
+                ),
+              ),
+              Container(
+                color: Colors.white,
+                alignment: Alignment.bottomRight,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      children: const [
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                        ),
+                        Text("8.2/10"),
+                        Text(
+                          "150,212",
+                          style: TextStyle(color: Colors.grey),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.star_border_rounded),
+                          color: const Color.fromARGB(255, 8, 8, 8),
+                          onPressed: () {
+                            //typically show a page to implement ratings increase
+                          },
+                        ),
+                        const Text(
+                          "Rate This",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(5),
+                          color: Colors.green,
+                          child: const Text(
+                            "86",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                        const Text(
+                          "Metascore",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        const Text(
+                          "62 critic reviews",
+                          style: TextStyle(color: Colors.grey),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              )
+            ]
+                //
+                ),
             // elevated banner
             // Container(),
             // title, year, rated, time

@@ -15,13 +15,14 @@ class InTheater extends StatefulWidget {
 class _InTheaterState extends State<InTheater> {
   static const List _genre = [
     "Action",
+    "Crime",
+    "Comedy",
     "Drama",
     "Adventure",
     "Thriller",
     "Horror",
     "Sci-fi",
     "Romance",
-    "Comedy",
     "Fantasy",
     "Mystery",
     "Suspense"
@@ -72,38 +73,68 @@ class _InTheaterState extends State<InTheater> {
                     height: 60,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
-                      children: const [
-                        Text(
-                          "In Theater",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(left: 8),
+                              child: const Text(
+                                "In Theater",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                              width: 15,
+                              // constraints: const BoxConstraints(maxWidth: 50),
+                              // decoration: BoxDecoration(
+                              //     // color: CustomColors.secColor,
+                              //     border: Border.all(
+                              //         color: CustomColors.outlineColor),
+                              //     borderRadius: const BorderRadius.all(
+                              //         Radius.circular(55))),
+                              child: IconButton(
+                                padding: const EdgeInsets.all(0),
+                                // icon: Icons.remove_outlined,
+                                icon: const Icon(
+                                  Icons.remove_outlined,
+                                  size: 50,
+                                ),
+                                color: Colors.red,
+                                onPressed: () {},
+                                // size: ,
+                              ),
+                            )
+                          ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 100,
                         ),
-                        Text(
+                        const Text(
                           "Box Office",
                           style: TextStyle(
                               color: CustomColors.unselectedNavBarColor,
                               fontWeight: FontWeight.bold,
                               fontSize: 20),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 100,
                         ),
-                        Text(
+                        const Text(
                           "Community View",
                           style: TextStyle(
                               color: CustomColors.unselectedNavBarColor,
                               fontWeight: FontWeight.bold,
                               fontSize: 20),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 100,
                         ),
-                        Text(
+                        const Text(
                           "Netflix",
                           style: TextStyle(
                               color: CustomColors.unselectedNavBarColor,
@@ -115,46 +146,50 @@ class _InTheaterState extends State<InTheater> {
                   ),
                   // movie genre
                   Container(
-                      margin: const EdgeInsets.symmetric(vertical: 20),
+                      margin: const EdgeInsets.only(left: 20, top: 20),
                       height: 50,
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: List.generate(_genre.length, (int ind) {
                           return Card(
-                              // color: Colors.green,
-                              child: Container(
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: CustomColors.outlineColor),
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(30))),
-                            child: Container(
-                              width: 80.0,
-                              height: 80.0,
-                              child: Text(
-                                _genre[ind],
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(color: Colors.black),
-                              ),
-                            ),
-                          ));
+                              elevation: 0,
+                              color: CustomColors.backColor,
+                              child: Row(
+                                children: [
+                                  Container(
+                                    alignment: Alignment.center,
+                                    height: 30,
+                                    constraints:
+                                        const BoxConstraints(maxWidth: 90),
+                                    decoration: BoxDecoration(
+                                        // color: CustomColors.secColor,
+                                        border: Border.all(
+                                            color: CustomColors.outlineColor),
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(30))),
+                                    child: Text(
+                                      _genre[ind],
+                                      textAlign: TextAlign.center,
+                                      style:
+                                          const TextStyle(color: Colors.black),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  )
+                                ],
+                              ));
                         }),
                       )),
                 ],
               ),
             ),
             // movie image
-            Container(
-              alignment: Alignment.center,
-              height: 300,
-              width: 200,
-              decoration: BoxDecoration(
-                  border: Border.all(color: CustomColors.outlineColor),
-                  borderRadius: const BorderRadius.all(Radius.circular(30))),
-              child: Image.asset(
-                "assets/images/fordVferrari.png",
-              ),
-            ),
+            ClipRRect(
+                child: Image.asset(
+                  "assets/images/fordVferrari.png",
+                ),
+                borderRadius: BorderRadius.circular(50)),
             // // movie details (API fetching)
             // Container(
             //   margin: const EdgeInsets.only(top: 5, bottom: 5),
