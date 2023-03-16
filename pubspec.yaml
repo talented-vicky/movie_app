@@ -66,6 +66,8 @@ flutter:
     - assets/images/img2.png
     - assets/images/emilie.jpg
     - assets/images/larg.png
+    - assets/images/fordVferrari.png
+    - assets/images/ford.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

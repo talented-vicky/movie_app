@@ -33,7 +33,7 @@ class MovieAPIPage extends StatelessWidget {
                   borderRadius:
                       BorderRadius.only(bottomLeft: Radius.circular(10))),
               child: Image.asset(
-                'assets/iu.png',
+                'assets/images/ford.jpg',
                 height: 250,
               ),
             ),
