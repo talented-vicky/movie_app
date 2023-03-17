@@ -42,17 +42,23 @@ class _InTheaterState extends State<InTheater> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: CustomColors.backColor,
-        leading: const Icon(
-          Icons.menu_open,
-          color: Colors.black,
+        leading: Container(
+          margin: const EdgeInsets.only(left: 20),
+          child: const Icon(
+            Icons.menu_sharp,
+            color: Colors.black,
+          ),
         ),
         actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.search,
-                color: Colors.black,
-              ))
+          Container(
+            margin: const EdgeInsets.only(right: 20),
+            child: IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.search,
+                  color: Colors.black,
+                )),
+          )
         ],
       ),
       // backgroundColor: CustomColors.backColor,
@@ -186,10 +192,10 @@ class _InTheaterState extends State<InTheater> {
             ),
             // movie image
             ClipRRect(
+                borderRadius: BorderRadius.circular(50),
                 child: Image.asset(
                   "assets/images/fordVferrari.png",
-                ),
-                borderRadius: BorderRadius.circular(50)),
+                )),
             // // movie details (API fetching)
             // Container(
             //   margin: const EdgeInsets.only(top: 5, bottom: 5),
@@ -243,15 +249,25 @@ class _InTheaterState extends State<InTheater> {
                     "Ford v Ferrari",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const [
-                      Icon(Icons.star,
-                          color: Color.fromARGB(255, 255, 232, 20)),
+                      Icon(
+                        Icons.star,
+                        color: Color.fromARGB(255, 250, 213, 5),
+                        size: 12,
+                      ),
                       SizedBox(
                         width: 5,
                       ),
-                      Text("8.2")
+                      Text(
+                        "8.2",
+                        style: TextStyle(
+                            fontSize: 11, fontWeight: FontWeight.w200),
+                      )
                     ],
                   )
                 ],

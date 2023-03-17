@@ -30,6 +30,7 @@ class MovieAPIPage extends StatelessWidget {
           children: [
             // image, icon and overlap widget
             Stack(children: [
+              // top background image
               Container(
                 decoration: const BoxDecoration(
                     borderRadius:
@@ -38,40 +39,55 @@ class MovieAPIPage extends StatelessWidget {
                   'assets/images/ford.jpg',
                 ),
               ),
-              const Align(
-                alignment: Alignment.bottomLeft,
-                child: Icon(
-                  Icons.arrow_back_ios_new,
-                  color: Colors.black,
-                  size: 15,
-                ),
-              ),
+              // arrow_back icon
+              Container(
+                  padding: const EdgeInsets.only(left: 10, top: 15),
+                  child: GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: const Icon(
+                      Icons.arrow_back_ios_new,
+                      color: Colors.black,
+                      size: 15,
+                    ),
+                  )),
+              // white container with overlay
               Container(
                 width: double.infinity,
-                color: Colors.white,
-                margin: const EdgeInsets.only(left: 10, top: 230),
+                margin: const EdgeInsets.only(left: 20, top: 230),
                 padding: const EdgeInsets.only(top: 10, bottom: 10),
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        bottomLeft: Radius.circular(30))),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
+                    // star col
                     Column(
                       children: const [
                         Icon(
                           Icons.star,
-                          color: Colors.orange,
+                          color: Color.fromARGB(255, 250, 213, 5),
+                        ),
+                        SizedBox(
+                          height: 4,
                         ),
                         Text(
                           "8.2/10",
                           style: TextStyle(fontSize: 11),
                         ),
+                        SizedBox(
+                          height: 3,
+                        ),
                         Text(
                           "150,212",
-                          style: TextStyle(color: Colors.grey, fontSize: 11),
+                          style: TextStyle(color: Colors.grey, fontSize: 9),
                         )
                       ],
                     ),
+                    // rate and reviews col
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         IconButton(
                           icon: const Icon(Icons.star_border_rounded),
@@ -83,10 +99,13 @@ class MovieAPIPage extends StatelessWidget {
                         const Text(
                           "Rate This",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 11),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 11,
+                              height: .5),
                         )
                       ],
                     ),
+                    // metascore col
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -96,17 +115,23 @@ class MovieAPIPage extends StatelessWidget {
                           color: const Color.fromARGB(255, 95, 196, 98),
                           child: const Text(
                             "86",
-                            style: TextStyle(color: Colors.white, fontSize: 9),
+                            style: TextStyle(color: Colors.white, fontSize: 8),
                           ),
+                        ),
+                        const SizedBox(
+                          height: 7,
                         ),
                         const Text(
                           "Metascore",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 11),
+                              fontWeight: FontWeight.bold, fontSize: 10),
+                        ),
+                        const SizedBox(
+                          height: 5,
                         ),
                         const Text(
                           "62 critic reviews",
-                          style: TextStyle(color: Colors.grey, fontSize: 11),
+                          style: TextStyle(color: Colors.grey, fontSize: 10),
                         )
                       ],
                     )
@@ -114,111 +139,137 @@ class MovieAPIPage extends StatelessWidget {
                 ),
               )
             ]),
-            // title, year, rated, time
             Container(
-              height: 50,
-              padding: const EdgeInsets.only(left: 15, right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
+              child: Column(children: [
+                // title, year, rated, time
+                Container(
+                  height: 50,
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text("Ford v Ferrari",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 20)),
-                      Row(
-                        children: const [
-                          Text(
-                            "2019",
-                            style: TextStyle(color: Colors.grey, fontSize: 12),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            "PH-13",
-                            style: TextStyle(color: Colors.grey, fontSize: 12),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            "2h 32min",
-                            style: TextStyle(color: Colors.grey, fontSize: 12),
-                          )
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text("Ford v Ferrari",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20)),
+                          Container(
+                              margin: const EdgeInsets.only(left: 20),
+                              child: Row(
+                                children: const [
+                                  Text(
+                                    "2019",
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 12),
+                                  ),
+                                  SizedBox(
+                                    width: 15,
+                                  ),
+                                  Text(
+                                    "PH-13",
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 12),
+                                  ),
+                                  SizedBox(
+                                    width: 15,
+                                  ),
+                                  Text(
+                                    "2h 32min",
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 12),
+                                  )
+                                ],
+                              )),
                         ],
+                      ),
+                      // add to watchlist button
+                      Container(
+                        alignment: Alignment.center,
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                            color: CustomColors.secColor,
+                            border:
+                                Border.all(color: CustomColors.outlineColor),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(15))),
+                        child: const Icon(
+                          Icons.add,
+                          color: CustomColors.backColor,
+                          size: 18,
+                        ),
                       )
                     ],
                   ),
-                  Container(
-                    alignment: Alignment.center,
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        color: CustomColors.secColor,
-                        border: Border.all(color: CustomColors.outlineColor),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(15))),
-                    child: const Icon(
-                      Icons.add,
-                      color: CustomColors.backColor,
-                      size: 18,
-                    ),
-                  )
-                ],
-              ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                //genre
+                Container(
+                  padding: const EdgeInsets.only(left: 15, right: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        height: 30,
+                        width: 60,
+                        decoration: BoxDecoration(
+                            // color: CustomColors.secColor,
+                            border:
+                                Border.all(color: CustomColors.outlineColor),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(15))),
+                        child: const Text(
+                          "Action",
+                          style: TextStyle(fontSize: 13),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 12,
+                      ),
+                      Container(
+                        alignment: Alignment.center,
+                        height: 30,
+                        constraints: const BoxConstraints(maxWidth: 100),
+                        decoration: BoxDecoration(
+                            // color: CustomColors.secColor,
+                            border:
+                                Border.all(color: CustomColors.outlineColor),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(15))),
+                        child: const Text(
+                          "Biography",
+                          style: TextStyle(fontSize: 13),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 12,
+                      ),
+                      Container(
+                        alignment: Alignment.center,
+                        height: 30,
+                        width: 70,
+                        decoration: BoxDecoration(
+                            // color: CustomColors.secColor,
+                            border:
+                                Border.all(color: CustomColors.outlineColor),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(15))),
+                        child: const Text(
+                          "Drama",
+                          style: TextStyle(fontSize: 13),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ]),
             ),
-            //genre
-            Container(
-              padding: const EdgeInsets.only(left: 15, right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    height: 30,
-                    width: 60,
-                    decoration: BoxDecoration(
-                        // color: CustomColors.secColor,
-                        border: Border.all(color: CustomColors.outlineColor),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(15))),
-                    child: const Text("Action"),
-                  ),
-                  const SizedBox(
-                    width: 12,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    height: 30,
-                    constraints: const BoxConstraints(maxWidth: 100),
-                    decoration: BoxDecoration(
-                        // color: CustomColors.secColor,
-                        border: Border.all(color: CustomColors.outlineColor),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(15))),
-                    child: const Text("Biography"),
-                  ),
-                  const SizedBox(
-                    width: 12,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    height: 30,
-                    width: 70,
-                    decoration: BoxDecoration(
-                        // color: CustomColors.secColor,
-                        border: Border.all(color: CustomColors.outlineColor),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(15))),
-                    child: const Text("Drama"),
-                  ),
-                ],
-              ),
-            ),
+
             // plot summary
             Container(
               padding: const EdgeInsets.only(left: 15, right: 15),
@@ -240,7 +291,8 @@ class MovieAPIPage extends StatelessWidget {
                   ),
                   Text(
                     "American car designer, Carroll Shelby and driver Kri Miles battle corporate interference and the laws of physics to build a revolutionary race car for Ford in order to match the ongoing moentary influx in the Mercedes company",
-                    style: TextStyle(color: Colors.grey, fontSize: 11),
+                    style: TextStyle(
+                        color: Colors.grey, fontSize: 11, height: 1.5),
                   ),
                 ],
               ),
