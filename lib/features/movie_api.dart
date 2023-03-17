@@ -31,10 +31,6 @@ class MovieAPIPage extends StatelessWidget {
             // image, icon and overlap widget
             Stack(children: [
               Container(
-                color: Colors.amber,
-                child: const Text("icon here"),
-              ),
-              Container(
                 decoration: const BoxDecoration(
                     borderRadius:
                         BorderRadius.only(bottomLeft: Radius.circular(10))),
@@ -42,9 +38,19 @@ class MovieAPIPage extends StatelessWidget {
                   'assets/images/ford.jpg',
                 ),
               ),
+              const Align(
+                alignment: Alignment.bottomLeft,
+                child: Icon(
+                  Icons.arrow_back_ios_new,
+                  color: Colors.black,
+                  size: 15,
+                ),
+              ),
               Container(
+                width: double.infinity,
                 color: Colors.white,
-                alignment: Alignment.bottomRight,
+                margin: const EdgeInsets.only(left: 10, top: 230),
+                padding: const EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -52,16 +58,20 @@ class MovieAPIPage extends StatelessWidget {
                       children: const [
                         Icon(
                           Icons.star,
-                          color: Colors.yellow,
+                          color: Colors.orange,
                         ),
-                        Text("8.2/10"),
+                        Text(
+                          "8.2/10",
+                          style: TextStyle(fontSize: 11),
+                        ),
                         Text(
                           "150,212",
-                          style: TextStyle(color: Colors.grey),
+                          style: TextStyle(color: Colors.grey, fontSize: 11),
                         )
                       ],
                     ),
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         IconButton(
                           icon: const Icon(Icons.star_border_rounded),
@@ -72,41 +82,42 @@ class MovieAPIPage extends StatelessWidget {
                         ),
                         const Text(
                           "Rate This",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 11),
                         )
                       ],
                     ),
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Container(
-                          padding: const EdgeInsets.all(5),
-                          color: Colors.green,
+                          padding: const EdgeInsets.only(
+                              left: 5, right: 5, top: 2, bottom: 2),
+                          color: const Color.fromARGB(255, 95, 196, 98),
                           child: const Text(
                             "86",
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Colors.white, fontSize: 9),
                           ),
                         ),
                         const Text(
                           "Metascore",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 11),
                         ),
                         const Text(
                           "62 critic reviews",
-                          style: TextStyle(color: Colors.grey),
+                          style: TextStyle(color: Colors.grey, fontSize: 11),
                         )
                       ],
                     )
                   ],
                 ),
               )
-            ]
-                //
-                ),
-            // elevated banner
-            // Container(),
+            ]),
             // title, year, rated, time
             Container(
               height: 50,
+              padding: const EdgeInsets.only(left: 15, right: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -161,224 +172,230 @@ class MovieAPIPage extends StatelessWidget {
               ),
             ),
             //genre
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                  alignment: Alignment.center,
-                  height: 30,
-                  width: 60,
-                  decoration: BoxDecoration(
-                      // color: CustomColors.secColor,
-                      border: Border.all(color: CustomColors.outlineColor),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(15))),
-                  child: const Text("Action"),
-                ),
-                const SizedBox(
-                  width: 12,
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  height: 30,
-                  constraints: const BoxConstraints(maxWidth: 100),
-                  decoration: BoxDecoration(
-                      // color: CustomColors.secColor,
-                      border: Border.all(color: CustomColors.outlineColor),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(15))),
-                  child: const Text("Biography"),
-                ),
-                const SizedBox(
-                  width: 12,
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  height: 30,
-                  width: 70,
-                  decoration: BoxDecoration(
-                      // color: CustomColors.secColor,
-                      border: Border.all(color: CustomColors.outlineColor),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(15))),
-                  child: const Text("Drama"),
-                ),
-              ],
+            Container(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    height: 30,
+                    width: 60,
+                    decoration: BoxDecoration(
+                        // color: CustomColors.secColor,
+                        border: Border.all(color: CustomColors.outlineColor),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(15))),
+                    child: const Text("Action"),
+                  ),
+                  const SizedBox(
+                    width: 12,
+                  ),
+                  Container(
+                    alignment: Alignment.center,
+                    height: 30,
+                    constraints: const BoxConstraints(maxWidth: 100),
+                    decoration: BoxDecoration(
+                        // color: CustomColors.secColor,
+                        border: Border.all(color: CustomColors.outlineColor),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(15))),
+                    child: const Text("Biography"),
+                  ),
+                  const SizedBox(
+                    width: 12,
+                  ),
+                  Container(
+                    alignment: Alignment.center,
+                    height: 30,
+                    width: 70,
+                    decoration: BoxDecoration(
+                        // color: CustomColors.secColor,
+                        border: Border.all(color: CustomColors.outlineColor),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(15))),
+                    child: const Text("Drama"),
+                  ),
+                ],
+              ),
             ),
             // plot summary
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Plot Summary",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 15),
+            Container(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Plot Summary",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 15),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  "American car designer, Carroll Shelby and driver Kri Miles battle corporate interference and the laws of physics to build a revolutionary race car for Ford in order to match the ongoing moentary influx in the Mercedes company",
-                  style: TextStyle(color: Colors.grey, fontSize: 11),
-                ),
-              ],
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    "American car designer, Carroll Shelby and driver Kri Miles battle corporate interference and the laws of physics to build a revolutionary race car for Ford in order to match the ongoing moentary influx in the Mercedes company",
+                    style: TextStyle(color: Colors.grey, fontSize: 11),
+                  ),
+                ],
+              ),
             ),
+
             // cast and crew
-            Column(
-              children: [
-                const Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Cast & Crew",
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 15),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Container(
+                padding: const EdgeInsets.only(left: 15, right: 15),
+                child: Column(
                   children: [
-                    Column(
-                      children: const [
-                        CircleAvatar(
-                          backgroundImage: AssetImage('assets/images/img1.png'),
-                          radius: 27,
-                        ),
-                        // Image.asset('asset/stuff.jpg', ),
-                        Text(
-                          'James',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 11),
-                        ),
-                        Text(
-                          'Mangold',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 11),
-                        ),
-                        Text(
-                          'Director',
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 11),
-                        )
-                      ],
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Cast & Crew",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 15),
+                      ),
                     ),
-                    Column(
-                      children: const [
-                        CircleAvatar(
-                          backgroundImage: AssetImage('assets/images/img2.png'),
-                          radius: 27,
-                        ),
-                        // Image.asset('asset/stuff.jpg', ),
-                        Text(
-                          'Matt',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 11),
-                        ),
-                        Text(
-                          'Damon',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 11),
-                        ),
-                        Text(
-                          'Carroll',
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 11),
-                        )
-                      ],
+                    const SizedBox(
+                      height: 15,
                     ),
-                    Column(
-                      children: const [
-                        CircleAvatar(
-                          backgroundImage: AssetImage('assets/images/larg.jpg'),
-                          radius: 27,
-                        ),
-                        // Image.asset('asset/stuff.jpg', ),
-                        Text(
-                          'Christian',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 11),
-                        ),
-                        Text(
-                          'Bale',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 11),
-                        ),
-                        Text(
-                          'Ken Miles',
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 11),
-                        )
-                      ],
-                    ),
-                    Column(
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        ClipRRect(
-                          // backgroundImage: AssetImage('assets/img4.jpeg'),
-                          // radius: 27,
-                          borderRadius: BorderRadius.circular(15),
-                          child: Image.asset(
-                            'assets/iu.png',
-                            height: 30,
-                            width: 30,
-                            fit: BoxFit.cover,
-                          ),
+                        Column(
+                          children: const [
+                            CircleAvatar(
+                              backgroundImage:
+                                  AssetImage('assets/images/img1.png'),
+                              radius: 27,
+                            ),
+                            // Image.asset('asset/stuff.jpg', ),
+                            Text(
+                              'James',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 11),
+                            ),
+                            Text(
+                              'Mangold',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 11),
+                            ),
+                            Text(
+                              'Director',
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 11),
+                            )
+                          ],
                         ),
-                        // Image.asset('asset/stuff.jpg', ),
-                        const Text(
-                          'Caitriona',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 11),
+                        Column(
+                          children: const [
+                            CircleAvatar(
+                              backgroundImage:
+                                  AssetImage('assets/images/img2.png'),
+                              radius: 27,
+                            ),
+                            // Image.asset('asset/stuff.jpg', ),
+                            Text(
+                              'Matt',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 11),
+                            ),
+                            Text(
+                              'Damon',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 11),
+                            ),
+                            Text(
+                              'Carroll',
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 11),
+                            )
+                          ],
                         ),
-                        const Text(
-                          'Balfe',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 11),
+                        Column(
+                          children: const [
+                            CircleAvatar(
+                              backgroundImage:
+                                  AssetImage('assets/images/larg.png'),
+                              radius: 27,
+                            ),
+                            // Image.asset('asset/stuff.jpg', ),
+                            Text(
+                              'Christian',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 11),
+                            ),
+                            Text(
+                              'Bale',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 11),
+                            ),
+                            Text(
+                              'Ken Miles',
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 11),
+                            )
+                          ],
                         ),
-                        const Text(
-                          'Mollie',
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 11),
-                        )
+                        Column(
+                          children: const [
+                            CircleAvatar(
+                              backgroundImage:
+                                  AssetImage('assets/images/emilie.jpg'),
+                              radius: 27,
+                            ),
+                            // Image.asset('asset/stuff.jpg', ),
+                            Text(
+                              'Caitriona',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 11),
+                            ),
+                            Text(
+                              'Balfe',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 11),
+                            ),
+                            Text(
+                              'Mollie',
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 11),
+                            )
+                          ],
+                        ),
                       ],
                     ),
                   ],
-                ),
-              ],
-            )
+                )),
           ],
         ),
       ),
