@@ -24,24 +24,22 @@ class MovieAPIPage extends StatelessWidget {
       //   ),
       // ),
       body: Container(
-        padding: const EdgeInsets.all(10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             // image, icon and overlap widget
             Stack(children: [
               // top background image
-              Container(
-                decoration: const BoxDecoration(
-                    borderRadius:
-                        BorderRadius.only(bottomLeft: Radius.circular(10))),
+              ClipRRect(
+                borderRadius:
+                    const BorderRadius.only(bottomLeft: Radius.circular(30)),
                 child: Image.asset(
                   'assets/images/ford.jpg',
                 ),
               ),
               // arrow_back icon
               Container(
-                  padding: const EdgeInsets.only(left: 10, top: 15),
+                  padding: const EdgeInsets.only(left: 20, top: 30),
                   child: GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: const Icon(
@@ -58,8 +56,8 @@ class MovieAPIPage extends StatelessWidget {
                 decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        bottomLeft: Radius.circular(30))),
+                        topLeft: Radius.circular(40),
+                        bottomLeft: Radius.circular(40))),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -140,8 +138,9 @@ class MovieAPIPage extends StatelessWidget {
               )
             ]),
             Container(
+              padding: const EdgeInsets.only(left: 25, right: 25),
               child: Column(children: [
-                // title, year, rated, time
+                // title, year, rated, time, add-to-watchlist
                 Container(
                   height: 50,
                   child: Row(
@@ -150,13 +149,15 @@ class MovieAPIPage extends StatelessWidget {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text("Ford v Ferrari",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 20)),
                           Container(
-                              margin: const EdgeInsets.only(left: 20),
+                              margin: const EdgeInsets.only(top: 2),
+                              child: const Text("Ford v Ferrari",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 20))),
+                          Container(
+                              padding: const EdgeInsets.only(left: 5),
                               child: Row(
                                 children: const [
                                   Text(
@@ -207,9 +208,9 @@ class MovieAPIPage extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
+
                 //genre
                 Container(
-                  padding: const EdgeInsets.only(left: 15, right: 15),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -272,7 +273,7 @@ class MovieAPIPage extends StatelessWidget {
 
             // plot summary
             Container(
-              padding: const EdgeInsets.only(left: 15, right: 15),
+              padding: const EdgeInsets.only(left: 25, right: 25),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
@@ -300,7 +301,7 @@ class MovieAPIPage extends StatelessWidget {
 
             // cast and crew
             Container(
-                padding: const EdgeInsets.only(left: 15, right: 15),
+                padding: const EdgeInsets.only(left: 25, right: 25),
                 child: Column(
                   children: [
                     const Align(
@@ -420,7 +421,6 @@ class MovieAPIPage extends StatelessWidget {
                                   AssetImage('assets/images/emilie.jpg'),
                               radius: 27,
                             ),
-                            // Image.asset('asset/stuff.jpg', ),
                             Text(
                               'Caitriona',
                               style: TextStyle(

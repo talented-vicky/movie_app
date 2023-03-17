@@ -43,7 +43,7 @@ class _InTheaterState extends State<InTheater> {
         elevation: 0,
         backgroundColor: CustomColors.backColor,
         leading: Container(
-          margin: const EdgeInsets.only(left: 20),
+          margin: const EdgeInsets.only(left: 20, top: 30),
           child: const Icon(
             Icons.menu_sharp,
             color: Colors.black,
@@ -51,7 +51,7 @@ class _InTheaterState extends State<InTheater> {
         ),
         actions: [
           Container(
-            margin: const EdgeInsets.only(right: 20),
+            margin: const EdgeInsets.only(right: 20, top: 30),
             child: IconButton(
                 onPressed: () {},
                 icon: const Icon(
