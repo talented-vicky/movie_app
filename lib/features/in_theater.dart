@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+// import 'package:cupertino_icons/cupertino_icons.dart';
+
 import 'package:movie_app/features/movie_api.dart';
-import 'package:movie_app/models/movie.dart';
+// import 'package:movie_app/models/movie.dart';
 
 import '../constants/custom_colors.dart';
-import '../services/movie_services.dart';
+// import '../services/movie_services.dart';
 
 class InTheater extends StatefulWidget {
   const InTheater({super.key});
@@ -28,13 +30,13 @@ class _InTheaterState extends State<InTheater> {
     "Suspense"
   ];
 
-  static const List _findMovies = [
-    "In Theater",
-    "Box Office",
-    "Community",
-    "Netflix",
-    "IMDB"
-  ];
+  // static const List _findMovies = [
+  //   "In Theater",
+  //   "Box Office",
+  //   "Community",
+  //   "Netflix",
+  //   "IMDB"
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -96,23 +98,14 @@ class _InTheaterState extends State<InTheater> {
                             SizedBox(
                               height: 10,
                               width: 15,
-                              // constraints: const BoxConstraints(maxWidth: 50),
-                              // decoration: BoxDecoration(
-                              //     // color: CustomColors.secColor,
-                              //     border: Border.all(
-                              //         color: CustomColors.outlineColor),
-                              //     borderRadius: const BorderRadius.all(
-                              //         Radius.circular(55))),
                               child: IconButton(
                                 padding: const EdgeInsets.all(0),
-                                // icon: Icons.remove_outlined,
                                 icon: const Icon(
                                   Icons.remove_outlined,
                                   size: 50,
                                 ),
                                 color: Colors.red,
                                 onPressed: () {},
-                                // size: ,
                               ),
                             )
                           ],
@@ -170,7 +163,8 @@ class _InTheaterState extends State<InTheater> {
                                     decoration: BoxDecoration(
                                         // color: CustomColors.secColor,
                                         border: Border.all(
-                                            color: CustomColors.outlineColor),
+                                            color: const Color.fromARGB(
+                                                255, 192, 190, 190)),
                                         borderRadius: const BorderRadius.all(
                                             Radius.circular(30))),
                                     child: Text(

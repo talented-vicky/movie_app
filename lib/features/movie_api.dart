@@ -57,7 +57,14 @@ class MovieAPIPage extends StatelessWidget {
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(40),
-                        bottomLeft: Radius.circular(40))),
+                        bottomLeft: Radius.circular(40)),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Color.fromARGB(255, 245, 241, 241),
+                          spreadRadius: 5,
+                          blurRadius: 10,
+                          offset: Offset(0, 10))
+                    ]),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -301,7 +308,7 @@ class MovieAPIPage extends StatelessWidget {
 
             // cast and crew
             Container(
-                padding: const EdgeInsets.only(left: 25, right: 25),
+                padding: const EdgeInsets.only(left: 25, right: 25, bottom: 20),
                 child: Column(
                   children: [
                     const Align(
@@ -325,10 +332,12 @@ class MovieAPIPage extends StatelessWidget {
                           children: const [
                             CircleAvatar(
                               backgroundImage:
-                                  AssetImage('assets/images/img1.png'),
+                                  AssetImage('assets/images/mangold.jpg'),
                               radius: 27,
                             ),
-                            // Image.asset('asset/stuff.jpg', ),
+                            SizedBox(
+                              height: 8,
+                            ),
                             Text(
                               'James',
                               style: TextStyle(
@@ -336,12 +345,18 @@ class MovieAPIPage extends StatelessWidget {
                                   fontWeight: FontWeight.w600,
                                   fontSize: 11),
                             ),
+                            SizedBox(
+                              height: 2,
+                            ),
                             Text(
                               'Mangold',
                               style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 11),
+                            ),
+                            SizedBox(
+                              height: 5,
                             ),
                             Text(
                               'Director',
@@ -356,10 +371,12 @@ class MovieAPIPage extends StatelessWidget {
                           children: const [
                             CircleAvatar(
                               backgroundImage:
-                                  AssetImage('assets/images/img2.png'),
+                                  AssetImage('assets/images/damon.jpg'),
                               radius: 27,
                             ),
-                            // Image.asset('asset/stuff.jpg', ),
+                            SizedBox(
+                              height: 8,
+                            ),
                             Text(
                               'Matt',
                               style: TextStyle(
@@ -367,12 +384,18 @@ class MovieAPIPage extends StatelessWidget {
                                   fontWeight: FontWeight.w600,
                                   fontSize: 11),
                             ),
+                            SizedBox(
+                              height: 2,
+                            ),
                             Text(
                               'Damon',
                               style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 11),
+                            ),
+                            SizedBox(
+                              height: 5,
                             ),
                             Text(
                               'Carroll',
@@ -387,10 +410,12 @@ class MovieAPIPage extends StatelessWidget {
                           children: const [
                             CircleAvatar(
                               backgroundImage:
-                                  AssetImage('assets/images/larg.png'),
+                                  AssetImage('assets/images/bale.jpg'),
                               radius: 27,
                             ),
-                            // Image.asset('asset/stuff.jpg', ),
+                            SizedBox(
+                              height: 8,
+                            ),
                             Text(
                               'Christian',
                               style: TextStyle(
@@ -398,12 +423,18 @@ class MovieAPIPage extends StatelessWidget {
                                   fontWeight: FontWeight.w600,
                                   fontSize: 11),
                             ),
+                            SizedBox(
+                              height: 2,
+                            ),
                             Text(
                               'Bale',
                               style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 11),
+                            ),
+                            SizedBox(
+                              height: 5,
                             ),
                             Text(
                               'Ken Miles',
@@ -418,8 +449,11 @@ class MovieAPIPage extends StatelessWidget {
                           children: const [
                             CircleAvatar(
                               backgroundImage:
-                                  AssetImage('assets/images/emilie.jpg'),
+                                  AssetImage('assets/images/katriona.jpg'),
                               radius: 27,
+                            ),
+                            SizedBox(
+                              height: 8,
                             ),
                             Text(
                               'Caitriona',
@@ -428,6 +462,9 @@ class MovieAPIPage extends StatelessWidget {
                                   fontWeight: FontWeight.w600,
                                   fontSize: 11),
                             ),
+                            SizedBox(
+                              height: 2,
+                            ),
                             Text(
                               'Balfe',
                               style: TextStyle(
@@ -435,13 +472,16 @@ class MovieAPIPage extends StatelessWidget {
                                   fontWeight: FontWeight.w600,
                                   fontSize: 11),
                             ),
+                            SizedBox(
+                              height: 5,
+                            ),
                             Text(
                               'Mollie',
                               style: TextStyle(
                                   color: Colors.grey,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 11),
-                            )
+                            ),
                           ],
                         ),
                       ],
