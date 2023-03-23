@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       onGenerateRoute: (settings) => generateRoute(settings),
       onUnknownRoute: routeNotGenerated,
-      home: const InTheater(),
+      home: InTheater(),
     );
   }
 }

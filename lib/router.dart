@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/main.dart';
 
-import './features/movie_api.dart';
+import 'features/movie_info.dart';
 
 // Route<dynamic> generateRoute(RouteSettings routeSettings) {
 Route? generateRoute(RouteSettings routeSettings) {

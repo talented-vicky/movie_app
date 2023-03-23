@@ -1,20 +1,52 @@
+/*
+IMPORTANT
+
+*** fix drop shadow for image on in_theater page
+*** push to github and continue on api fetch from tmdb
+ */
+
+import 'package:tmdb_api/tmdb_api.dart';
+
 import 'package:flutter/material.dart';
 // import 'package:cupertino_icons/cupertino_icons.dart';
 
-import 'package:movie_app/features/movie_api.dart';
+import 'package:movie_app/features/movie_info.dart';
 // import 'package:movie_app/models/movie.dart';
 
 import '../constants/custom_colors.dart';
 // import '../services/movie_services.dart';
 
 class InTheater extends StatefulWidget {
-  const InTheater({super.key});
+  InTheater({super.key});
 
   @override
   State<InTheater> createState() => _InTheaterState();
 }
 
 class _InTheaterState extends State<InTheater> {
+  List _moviestv = [];
+
+  final String _apikey = "f36387f52cc0e30cd5ad94e240fddfdd";
+  final String _accesstoken =
+      "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMzYzODdmNTJjYzBlMzBjZDVhZDk0ZTI0MGZkZGZkZCIsInN1YiI6IjY0MTQyMDJjZWRlMWIwMjhlODRlN2UzMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.56Pk05uljr-DiLl5wgAqx9seOYsWNorQhvqLOGwPV6I";
+
+  @override
+  void initState() {
+    getMovies();
+    super.initState();
+  }
+
+  getMovies() async {
+    TMDB tmdbWithLogs = TMDB(ApiKeys(_apikey, _accesstoken),
+        logConfig: ConfigLogger(showErrorLogs: true, showLogs: true));
+
+    Map intheater = await tmdbWithLogs.v3.tv.getPouplar();
+    setState(() {
+      _moviestv = intheater['results'];
+    });
+    print(_moviestv);
+  }
+
   static const List _genre = [
     "Action",
     "Crime",

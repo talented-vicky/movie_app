@@ -13,6 +13,7 @@ class MovieService {
   static const Map<String, String> _headers = {
     "x-rapidapi-key": "4c1bdd2f65msha061590ecef1ee6p1bb40bjsn46fdc2a8d8ac",
     "x-rapidapi-host": _authority,
+    'Content-Type': 'application/json' // just added this
   };
 
   // Future<List<MovieData>>? getMovie() async {
