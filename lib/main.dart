@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-
-import './features/in_theater.dart';
-import './router.dart';
+import 'package:movie_app/features/movie_api.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  static const routeName = '/';
   const MyApp({super.key});
 
   @override
@@ -18,10 +15,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      initialRoute: '/',
-      onGenerateRoute: (settings) => generateRoute(settings),
-      onUnknownRoute: routeNotGenerated,
-      home: InTheater(),
+      // onGenerateRoute: (settings) => generateRoute(settings),
+      // onUnknownRoute: routeNotGenerated,
+      home: MovieAPI(),
     );
   }
 }

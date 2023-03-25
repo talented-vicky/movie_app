@@ -33,7 +33,6 @@ dependencies:
   http: ^0.12.0
   cupertino_icons: ^1.0.2
   tmdb_api:
-  google_fonts:
 
 dev_dependencies:
   flutter_test:
