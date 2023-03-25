@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/constants/custom_colors.dart';
 import 'package:movie_app/features/movie_info.dart';
 
-class Community extends StatelessWidget {
-  final List community;
-  const Community({super.key, required this.community});
+class Netflix extends StatelessWidget {
+  final List netflix;
+  const Netflix({super.key, required this.netflix});
 
   static const List _genre = [
     "Action",
@@ -68,7 +68,7 @@ class Community extends StatelessWidget {
                       //title
                       Container(
                           child: const Text(
-                        "Community",
+                        "Netflix",
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -131,11 +131,12 @@ class Community extends StatelessWidget {
                   const SizedBox(
                     height: 30,
                   ),
+
                   // tmdb movie
                   Container(
                     height: 500,
                     child: ListView.builder(
-                      itemCount: community.length,
+                      itemCount: netflix.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return InkWell(
@@ -145,23 +146,19 @@ class Community extends StatelessWidget {
                                 MaterialPageRoute(
                                     builder: (context) => MovieAPIPage(
                                         title:
-                                            community[index]['name'].toString(),
+                                            netflix[index]['title'].toString(),
                                         bannerurl:
                                             "https://image.tmdb.org/t/p/w500" +
-                                                community[index]
-                                                    ['backdrop_path'],
-                                        rating: community[index]['vote_average']
+                                                netflix[index]['backdrop_path'],
+                                        rating: netflix[index]['vote_average']
                                             .toString(),
-                                        ratingcount: community[index]
+                                        ratingcount: netflix[index]
                                                 ['vote_count']
                                             .toString(),
-                                        release: community[index]
-                                            ['first_air_date'],
-                                        streamtime: community[index]
-                                                ['popularity']
+                                        release: netflix[index]['release_date'],
+                                        streamtime: netflix[index]['popularity']
                                             .toString(),
-                                        summary: community[index]
-                                            ['overview'])));
+                                        summary: netflix[index]['overview'])));
                           },
                           child: Container(
                             width: 330,
@@ -178,7 +175,7 @@ class Community extends StatelessWidget {
                                         image: DecorationImage(
                                             image: NetworkImage(
                                                 "https://image.tmdb.org/t/p/w500" +
-                                                    community[index]
+                                                    netflix[index]
                                                         ['poster_path']),
                                             fit: BoxFit.cover)),
                                   ),
@@ -191,8 +188,8 @@ class Community extends StatelessWidget {
                                   child: Column(
                                     children: [
                                       Text(
-                                        community[index]['name'] != null
-                                            ? community[index]['name']
+                                        netflix[index]['title'] != null
+                                            ? netflix[index]['title']
                                             : 'Title Loading',
                                         style: const TextStyle(
                                             fontWeight: FontWeight.bold,
@@ -216,10 +213,9 @@ class Community extends StatelessWidget {
                                             width: 5,
                                           ),
                                           Text(
-                                            community[index]['vote_average'] !=
+                                            netflix[index]['vote_average'] !=
                                                     null
-                                                ? community[index]
-                                                        ['vote_average']
+                                                ? netflix[index]['vote_average']
                                                     .toString()
                                                 : "5.2",
                                             style: const TextStyle(

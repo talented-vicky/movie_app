@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:movie_app/features/movie_api.dart';
 import 'package:movie_app/features/in_theater.dart';
+import 'package:movie_app/features/box_office.dart';
+import 'package:movie_app/features/community.dart';
+import 'package:movie_app/features/netflix.dart';
+
+import 'package:movie_app/features/movie_api.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
 import 'package:movie_app/features/movie_info.dart';
@@ -17,7 +21,9 @@ class MovieAPI extends StatefulWidget {
 
 class _MovieAPIState extends State<MovieAPI> {
   List moviestv = [];
-  // List _latest = [];
+  List boxofficeMov = [];
+  List communityMov = [];
+  List netflixMov = [];
 
   final String _apikey = "f36387f52cc0e30cd5ad94e240fddfdd";
   final String _accesstoken =
@@ -33,11 +39,18 @@ class _MovieAPIState extends State<MovieAPI> {
     TMDB tmdbWithLogs = TMDB(ApiKeys(_apikey, _accesstoken),
         logConfig: ConfigLogger(showErrorLogs: true, showLogs: true));
 
-    Map intheater = await tmdbWithLogs.v3.tv.getPouplar();
+    Map intheaterResult = await tmdbWithLogs.v3.tv.getPouplar();
+    Map boxofficeResult = await tmdbWithLogs.v3.discover.getMovies();
+    Map communityResult = await tmdbWithLogs.v3.discover.getTvShows();
+    Map netflixResult = await tmdbWithLogs.v3.movies.getTopRated();
     setState(() {
-      moviestv = intheater['results'];
+      moviestv = intheaterResult['results'];
+      boxofficeMov = boxofficeResult['results'];
+      communityMov = communityResult['results'];
+      netflixMov = netflixResult['results'];
     });
-    print(moviestv);
+    // print(moviestv);
+    print(communityMov);
   }
 
   static const List _genre = [
@@ -54,14 +67,6 @@ class _MovieAPIState extends State<MovieAPI> {
     "Mystery",
     "Suspense"
   ];
-
-  // static const List _findMovies = [
-  //   "In Theater",
-  //   "Box Office",
-  //   "Community",
-  //   "Netflix",
-  //   "IMDB"
-  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +93,6 @@ class _MovieAPIState extends State<MovieAPI> {
           )
         ],
       ),
-      // backgroundColor: CustomColors.backColor,
       backgroundColor: CustomColors.backColor,
       body: SafeArea(
           child: Container(
@@ -110,15 +114,12 @@ class _MovieAPIState extends State<MovieAPI> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              margin: const EdgeInsets.only(left: 8),
-                              child: const Text(
-                                "In Theater",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
-                              ),
+                            const Text(
+                              "In Theater",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
                             ),
                             SizedBox(
                               height: 10,
@@ -138,33 +139,60 @@ class _MovieAPIState extends State<MovieAPI> {
                         const SizedBox(
                           width: 100,
                         ),
-                        const Text(
-                          "Box Office",
-                          style: TextStyle(
-                              color: CustomColors.unselectedNavBarColor,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        BoxOffice(boxoffice: boxofficeMov)));
+                          },
+                          child: const Text(
+                            "Box Office",
+                            style: TextStyle(
+                                color: CustomColors.unselectedNavBarColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20),
+                          ),
                         ),
                         const SizedBox(
                           width: 100,
                         ),
-                        const Text(
-                          "Community View",
-                          style: TextStyle(
-                              color: CustomColors.unselectedNavBarColor,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        Community(community: communityMov)));
+                          },
+                          child: const Text(
+                            "Community View",
+                            style: TextStyle(
+                                color: CustomColors.unselectedNavBarColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20),
+                          ),
                         ),
                         const SizedBox(
                           width: 100,
                         ),
-                        const Text(
-                          "Netflix",
-                          style: TextStyle(
-                              color: CustomColors.unselectedNavBarColor,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
-                        )
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        Netflix(netflix: netflixMov)));
+                          },
+                          child: const Text(
+                            "Netflix",
+                            style: TextStyle(
+                                color: CustomColors.unselectedNavBarColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -210,20 +238,22 @@ class _MovieAPIState extends State<MovieAPI> {
               ),
             ),
             // movies from tmdb
+            /* ISSUE STEMS FROM HERE */
             Container(
-              height: 600,
+              height: 450,
               child: ListView(
                 children: [InTheater(intheater: moviestv)],
               ),
             ),
-            // // movie image without database
+
+            // // movie image without api
             // ClipRRect(
             //     borderRadius: BorderRadius.circular(50),
             //     child: Image.asset(
             //       "assets/images/fordVferrari.png",
             //     )),
 
-            // // movie title, star and rating number
+            // // movie title, star and rating number without api
             // Container(
             //   child: Column(
             //     children: [
@@ -256,14 +286,14 @@ class _MovieAPIState extends State<MovieAPI> {
             //   ),
             // ),
 
-            // movie info navigation
-            ElevatedButton(
-              onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => const MovieAPIPage())),
-              child: const Text("Movie Info"),
-            ),
+            // // movie info navigation befor api integration
+            // ElevatedButton(
+            //   onPressed: () => Navigator.push(
+            //       context,
+            //       MaterialPageRoute(
+            //           builder: (BuildContext context) => const MovieAPIPage())),
+            //   child: const Text("Movie Info"),
+            // ),
           ],
         ),
       )),

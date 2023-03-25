@@ -1,12 +1,33 @@
 import 'package:flutter/material.dart';
 
-import '../models/movie.dart';
-import '../services/movie_services.dart';
+// import '../models/movie.dart';
+// import '../services/movie_services.dart';
 import '../constants/custom_colors.dart';
 
 class MovieAPIPage extends StatelessWidget {
-  static const routeName = '/movie_api_page';
-  const MovieAPIPage({Key? key}) : super(key: key);
+  final String bannerurl,
+      rating,
+      ratingcount,
+      // popularity,
+      // criticreviews,
+      title,
+      release,
+      // rated,
+      streamtime,
+      summary;
+  const MovieAPIPage(
+      {Key? key,
+      required this.bannerurl,
+      required this.rating,
+      required this.ratingcount,
+      // required this.popularity,
+      // required this.criticreviews,
+      required this.title,
+      required this.release,
+      // required this.rated,
+      required this.streamtime,
+      required this.summary})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +43,12 @@ class MovieAPIPage extends StatelessWidget {
               ClipRRect(
                 borderRadius:
                     const BorderRadius.only(bottomLeft: Radius.circular(30)),
-                child: Image.asset(
-                  'assets/images/ford.jpg',
+                // child: Image.asset(
+                //   'assets/images/ford.jpg',
+                // ),
+                child: Image.network(
+                  bannerurl,
+                  fit: BoxFit.cover,
                 ),
               ),
               // arrow_back icon
@@ -59,24 +84,25 @@ class MovieAPIPage extends StatelessWidget {
                   children: [
                     // star col
                     Column(
-                      children: const [
-                        Icon(
+                      children: [
+                        const Icon(
                           Icons.star,
                           color: Color.fromARGB(255, 250, 213, 5),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 4,
                         ),
                         Text(
-                          "8.2/10",
-                          style: TextStyle(fontSize: 11),
+                          rating != null ? rating + "/10" : "8/10",
+                          style: const TextStyle(fontSize: 11),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 3,
                         ),
                         Text(
-                          "150,212",
-                          style: TextStyle(color: Colors.grey, fontSize: 9),
+                          ratingcount != null ? ratingcount : "ratecount",
+                          style:
+                              const TextStyle(color: Colors.grey, fontSize: 9),
                         )
                       ],
                     ),
@@ -147,34 +173,36 @@ class MovieAPIPage extends StatelessWidget {
                         children: [
                           Container(
                               margin: const EdgeInsets.only(top: 2),
-                              child: const Text("Ford v Ferrari",
-                                  style: TextStyle(
+                              child: Text(title,
+                                  style: const TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 20))),
                           Container(
                               padding: const EdgeInsets.only(left: 5),
                               child: Row(
-                                children: const [
+                                children: [
                                   Text(
-                                    "2019",
-                                    style: TextStyle(
+                                    release,
+                                    style: const TextStyle(
                                         color: Colors.grey, fontSize: 12),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 15,
                                   ),
-                                  Text(
+                                  const Text(
                                     "PH-13",
                                     style: TextStyle(
                                         color: Colors.grey, fontSize: 12),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 15,
                                   ),
                                   Text(
-                                    "2h 32min",
-                                    style: TextStyle(
+                                    streamtime != null
+                                        ? streamtime
+                                        : "no streamtime",
+                                    style: const TextStyle(
                                         color: Colors.grey, fontSize: 12),
                                   )
                                 ],
@@ -272,8 +300,8 @@ class MovieAPIPage extends StatelessWidget {
               padding: const EdgeInsets.only(left: 25, right: 25),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Align(
+                children: [
+                  const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                       "Plot Summary",
@@ -283,12 +311,14 @@ class MovieAPIPage extends StatelessWidget {
                           fontSize: 15),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Text(
-                    "American car designer, Carroll Shelby and driver Kri Miles battle corporate interference and the laws of physics to build a revolutionary race car for Ford in order to match the ongoing moentary influx in the Mercedes company",
-                    style: TextStyle(
+                    summary != null
+                        ? summary
+                        : "summary not availabe for this movie",
+                    style: const TextStyle(
                         color: Colors.grey, fontSize: 11, height: 1.5),
                   ),
                 ],

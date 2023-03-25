@@ -1,5 +1,8 @@
 // import 'package:flutter/material.dart';
 // import 'package:movie_app/main.dart';
+// import 'package:movie_app/features/in_theater.dart';
+// import 'package:movie_app/features/box_office.dart';
+// import 'package:movie_app/features/community.dart';
 
 // import 'features/movie_info.dart';
 
@@ -15,6 +18,27 @@
 //       return MaterialPageRoute(
 //         settings: routeSettings,
 //         builder: (context) => const MovieAPIPage(),
+//       );
+//     case Community.routeName:
+//       return MaterialPageRoute(
+//         settings: routeSettings,
+//         builder: (BuildContext context) => Community(
+//           community: [],
+//         ),
+//       );
+//     case BoxOffice.routeName:
+//       return MaterialPageRoute(
+//         settings: routeSettings,
+//         builder: (context) => const BoxOffice(
+//           boxoffice: [],
+//         ),
+//       );
+//     case InTheater.routeName:
+//       return MaterialPageRoute(
+//         settings: routeSettings,
+//         builder: (context) => const InTheater(
+//           intheater: [],
+//         ),
 //       );
 //     default:
 //       return MaterialPageRoute(
