@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:movie_app/features/movie_api.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
