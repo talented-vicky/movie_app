@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:movie_app/features/movie_api.dart';
+import './services/movie_api_services.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       ),
       // onGenerateRoute: (settings) => generateRoute(settings),
       // onUnknownRoute: routeNotGenerated,
-      home: MovieAPI(),
+      home: const MovieAPIService(),
     );
   }
 }
